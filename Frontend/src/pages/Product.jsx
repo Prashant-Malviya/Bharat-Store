@@ -13,10 +13,8 @@ function Product() {
 
         products.map((product) => {
           if (product._id === productId) {;setProductData(product);
-            // console.log(product,'product');
             
             setImage(product.image);
-            // console.log(product.image,'image');
             
             return null;
           }
