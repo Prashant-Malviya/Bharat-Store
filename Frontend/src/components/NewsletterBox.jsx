@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewletterBox() {
+function NewsletterBox() {
 
     const onSubmitHandler = (e) =>{
         e.preventDefault();
@@ -35,4 +35,4 @@ function NewletterBox() {
   );
 }
 
-export default NewletterBox;
+export default NewsletterBox;
