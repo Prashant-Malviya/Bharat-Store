@@ -1,5 +1,5 @@
 import validator from "validator";
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -8,7 +8,42 @@ const createToken = (id) => {
 };
 
 // route for user login
-const loginUser = async (req, res) => {};
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await userModel.findOne({email});
+
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "User dosen't exists",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (isMatch) {
+      const token = createToken(user._id);
+      res.json({
+        success: true,
+        token,
+        message: "login successful",
+      });
+    } else {
+      res.json({
+        success: false,
+        message: "Invalid credentials",
+      });
+    }
+  } catch (error) {
+    console.log(error, "error");
+    res.json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+};
 
 // route for user registration
 const registerUser = async (req, res) => {
@@ -39,7 +74,7 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // hashing password
+    // hashing user  password
     const salt = await bcrypt.genSalt(10);
 
     const hashedPassword = await bcrypt.hash(password, salt);
