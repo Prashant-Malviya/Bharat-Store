@@ -12,7 +12,7 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await userModel.findOne({email});
+    const user = await userModel.findOne({ email });
 
     if (!user) {
       return res.json({
@@ -105,23 +105,19 @@ const registerUser = async (req, res) => {
 
 // route for admin login
 const adminLogin = async (req, res) => {
-
   try {
-    
-    const {email,password} = req.body;
+    const { email, password } = req.body;
 
-    if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
+    if (
+      email === process.env.ADMIN_EMAIL &&
+      password === process.env.ADMIN_PASSWORD
+    ) {
+      const token = jwt.sign(email + password, process.env.JWT_SECRET);
 
-      const token = jwt.sign(email+password, process.env.JWT_SECRET);
-
-    res.json({success:true,token})
-
-    }else{
-      
-      res.json({success:false,messages:"Invalid credentials"})
-
+      res.json({ success: true, token });
+    } else {
+      res.json({ success: false, messages: "Invalid credentials" });
     }
-
   } catch (error) {
     console.log(error, "error");
     res.json({
@@ -129,7 +125,6 @@ const adminLogin = async (req, res) => {
       message: error.message,
     });
   }
-
 };
 
 export { loginUser, registerUser, adminLogin };
