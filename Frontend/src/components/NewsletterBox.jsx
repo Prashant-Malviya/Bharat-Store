@@ -1,11 +1,9 @@
 import React from "react";
 
 function NewsletterBox() {
-
-    const onSubmitHandler = (e) =>{
-        e.preventDefault();
-        
-    }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="text-center">

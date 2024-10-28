@@ -39,8 +39,9 @@ function Orders() {
                 <p className="text-sm md:text-base ">Ready to ship</p>
               </div>
 
-              <button className="border px-4 py-2 text-sm font-medium rounded-sm">TRACK ORDER</button>
-
+              <button className="border px-4 py-2 text-sm font-medium rounded-sm">
+                TRACK ORDER
+              </button>
             </div>
           </div>
         ))}
