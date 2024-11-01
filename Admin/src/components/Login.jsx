@@ -3,21 +3,19 @@ import { backendUrl } from "../App";
 import axios from "axios";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-
-    const onSubmitHandler = async (e) => {
-        try {
-            e.preventDefault();
-            const response = await axios.post(backendUrl + '/api/user/admin',{email,password})
-            console.log(response);
-            
-            
-        } catch (error) {
-            
-        }
-    }
+  const onSubmitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(backendUrl + "/api/user/admin", {
+        email,
+        password,
+      });
+      console.log(response);
+    } catch (error) {}
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center w-full">
@@ -33,7 +31,7 @@ function Login() {
                 className="rounded-md w-full px-3 py-2 border border-gray-300 outline-none"
                 type="email"
                 placeholder="your@email.com"
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
             </div>
@@ -43,7 +41,7 @@ function Login() {
                 className="rounded-md w-full px-3 py-2 border border-gray-300 outline-none"
                 type="password"
                 placeholder="Enter Your Password"
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
             </div>

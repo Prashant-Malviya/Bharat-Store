@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Add() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default Add
+export default Add;
