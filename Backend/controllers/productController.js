@@ -14,6 +14,9 @@ const addProduct = async (req, res) => {
       bestSeller,
     } = req.body;
 
+    console.log("bestseller in backend",bestSeller);
+    
+
     const image1 = req.files.image1 && req.files.image1[0];
     const image2 = req.files.image2 && req.files.image2[0];
     const image3 = req.files.image3 && req.files.image3[0];
@@ -44,7 +47,7 @@ const addProduct = async (req, res) => {
       category,
       price: Number(price),
       subCategory,
-      bestSeller: bestSeller === "true" ? true : false,
+      bestSeller: bestSeller === 'true' ? true : !bestSeller,
       sizes: JSON.parse(sizes),
       image: imagesUrl,
       date: Date.now(),

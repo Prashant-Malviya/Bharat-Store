@@ -68,6 +68,9 @@ function Add({ token }) {
     }
   };
 
+  console.log('bestSeller from admin',bestSeller);
+  
+
   return (
     <form
       onSubmit={onSubmitHandler}
@@ -290,7 +293,7 @@ function Add({ token }) {
           type="checkbox"
           id="bestSeller"
         />
-        <label className="cursor-pointer" htmlFor="bestseller">
+        <label className="cursor-pointer" htmlFor="bestSeller">
           Add to bestseller
         </label>
       </div>
