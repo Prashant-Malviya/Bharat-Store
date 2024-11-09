@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ShopContext } from "../context/ShopContext";
+import axios from "axios";
 
 function Login() {
   const [currentState, setCurrentState] = useState("Login");
 
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
+  const {token,setToken,navigate,backendUrl} = useContext(ShopContext);
+
+  const [name,setName] = useState('');
+  const [password,setPassword] = useState('');
+  const [email,setEmail] = useState('');
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      
+      if(currentState === 'Sign Up'){
+        const response = await axios.post(backendUrl + '/api/user/register',{name,email,password})
+        console.log(response.data);
+        
+      }else{
+
+      }
+
+    } catch (error) {
+      
+    }
   };
 
   return (
@@ -21,6 +42,8 @@ function Login() {
         ""
       ) : (
         <input
+          onChange={(e)=>setName(e.target.value)}
+          value={name}
           type="text"
           placeholder="Name"
           className="w-full px-3 py-2 border border-gray-800"
@@ -28,12 +51,16 @@ function Login() {
         />
       )}
       <input
+        onChange={(e)=>setEmail(e.target.value)}
+        value={email}
         type="email"
         placeholder="Email"
         className="w-full px-3 py-2 border border-gray-800"
         required
       />
       <input
+        onChange={(e)=>setPassword(e.target.value)}
+        value={password}
         type="password"
         placeholder="Password"
         className="w-full px-3 py-2 border border-gray-800"
@@ -58,7 +85,7 @@ function Login() {
         )}
       </div>
 
-      <button className="bg-black text-white font-light px-8 py-2 mt-4 rounded-md font-bold">
+      <button className="bg-black text-white font-light px-8 py-2 mt-4 rounded-md">
         {currentState === "Login" ? "Sign In" : "Sign Up"}
       </button>
     </form>
