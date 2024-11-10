@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 
@@ -17,16 +17,44 @@ function Login() {
       
       if(currentState === 'Sign Up'){
         const response = await axios.post(backendUrl + '/api/user/register',{name,email,password})
-        console.log(response.data);
-        
+
+        if(response.data.success){
+          setToken(response.data.token);
+        localStorage.setItem('token',response.data.token)
+        }else{
+          toast.error(response.data.message);
+        }
       }else{
+
+        const response = await axios.post(backendUrl + '/api/user/login',{email,password});
+        
+        if(response.data.success){
+          setToken(response.data.token)
+          localStorage.setItem('token',response.data.token)
+        }else{
+          toast.error(response.data.message);
+        }
 
       }
 
     } catch (error) {
+      console.log(error);
+      toast.error(error.message);
       
     }
   };
+
+  useEffect(()=>{
+    if(token) {
+      navigate('/')
+    }
+  },[token])
+
+  useEffect(()=>{
+    if(!token && localStorage.getItem('token')){
+      setToken(localStorage.getItem('token'))
+    }
+  },[])
 
   return (
     <form
@@ -70,7 +98,7 @@ function Login() {
         <p className="cursor-pointer">Forgot your password</p>
         {currentState === "Login" ? (
           <p
-            onClick={() => setCurrentState("Sign UP")}
+            onClick={() => setCurrentState("Sign Up")}
             className="cursor-pointer"
           >
             Create Account
