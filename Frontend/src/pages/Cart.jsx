@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import { assets } from "../assets/assets";
 import CartTotal from "../components/CartTotal";
 
-//cart 
+//cart
 
 function Cart() {
   const { products, currency, cartItems, updateQuantity, navigate } =
