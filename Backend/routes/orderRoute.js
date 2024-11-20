@@ -1,7 +1,8 @@
 import express from 'express';
 import {placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus} from '../controllers/orderController.js';
 import adminAuth from '../middlewares/adminAuth.js'
-import authUser from '../middlewares/auth'
+import authUser from '../middlewares/auth.js';
+
 
 const orderRouter = express.Router();
 
@@ -18,3 +19,5 @@ orderRouter.post('/razorpay',authUser,placeOrderRazorpay)
 orderRouter.post('/userorders',authUser,userOrders);
 
 export default orderRouter;
+
+

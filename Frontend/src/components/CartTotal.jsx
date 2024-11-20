@@ -4,7 +4,9 @@ import Title from "./Title";
 
 function CartTotal() {
   const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
-  console.log(delivery_fee, "delivery_fee");
+  // console.log(delivery_fee, "delivery_fee");
+  // console.log('cart amount',getCartAmount());
+  
 
   return (
     <div className="w-full">
