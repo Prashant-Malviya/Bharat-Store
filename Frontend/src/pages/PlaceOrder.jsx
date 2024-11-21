@@ -16,7 +16,7 @@ function PlaceOrder() {
     delivery_fee,
     products,
   } = useContext(ShopContext);
-  
+
   const [method, setMehod] = useState("cod");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -62,16 +62,16 @@ function PlaceOrder() {
         amount: getCartAmount() + delivery_fee,
       };
 
-      // console.log(orderData);
+      console.log(orderData);
 
       switch (method) {
         case 'cod':
           const response = await axios.post(
-            backendUrl + "/api/order/place",
+            backendUrl + '/api/order/place',
             orderData,
             { headers: { token } }
           );
-          
+
           if (response.data.success) {
             setCartItems({});
             navigate("/orders");
@@ -79,12 +79,12 @@ function PlaceOrder() {
             toast.error(response.data.message);
           }
           break;
-      
+
         default:
           break;
-      } 
+      }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
