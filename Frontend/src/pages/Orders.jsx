@@ -4,7 +4,7 @@ import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 
 function Orders() {
-  const { backendUrl, token,setToken, currency } = useContext(ShopContext);
+  const { backendUrl, token, currency } = useContext(ShopContext);
 
   const [orderData, setOrderData] = useState([]);
 
@@ -12,10 +12,9 @@ function Orders() {
     try {
       
       if (!token) {
-
-
         return null;
       }
+      
       const response = await axios.post(
         backendUrl + '/api/order/userorders',
         {},
