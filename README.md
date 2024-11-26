@@ -56,7 +56,9 @@ cd ecommerce-web-app
 cd ./backend
 ```
 
-``` npm install ```
+``` 
+npm install
+ ```
 
 ```
 node ./server.js
@@ -66,7 +68,9 @@ node ./server.js
 ```
 cd ./frontend
 ```
-``` npm install ```
+``` 
+npm install
+ ```
 ```
 npm run dev
 ```
@@ -77,8 +81,12 @@ npm run dev
 cd ./admin
 ```
 
-``` npm install ```
-``` npm run dev ```
+``` 
+npm install
+ ```
+``` 
+npm run dev
+ ```
 
 ## If you face any issue than feel free to contact @linkedin
 
