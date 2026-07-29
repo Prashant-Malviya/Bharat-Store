@@ -2,7 +2,7 @@
 
 This is a responsive **E-Commerce Web App** built using the **MERN Stack** (MongoDB, Express.js, React.js, Node.js). It provides a seamless shopping experience where users can explore and purchase products by categories, search for specific items, and browse best sellers. Admins have full control over the product catalog and order management.
 
----
+--
 
 ## Features
 
